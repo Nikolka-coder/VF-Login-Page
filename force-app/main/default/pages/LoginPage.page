@@ -1,0 +1,29 @@
+<apex:page controller="LoginController">
+    <apex:form >
+        <apex:pageBlock >
+        <apex:pageBlockSection >
+             <apex:inputField id="name" value="{!student.User_Name__c}" required="true"/>
+            </apex:pageBlockSection>
+             <apex:pageBlockSection >
+            <apex:inputField id="age" value="{!student.Role__c}"/>
+             </apex:pageBlockSection>
+            
+        <apex:pageBlockSection >
+            <apex:pageBlockSectionItem >
+            
+                <apex:outputLabel value="password" for="pass"/>
+             <apex:inputSecret id="pass" value="{!student.Password__c}" required="true"/>     
+                </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+           
+            
+            <apex:pageBlockSection >
+            <apex:inputField id="gender" value="{!student.EmailId__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:commandButton value="signup" action="{!signUp}"/>
+              
+    
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
