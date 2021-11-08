@@ -13,13 +13,13 @@ public with sharing class AuthenticationController {
         Cookie tokenCookie = ApexPages.currentPage().getCookies().get('tokenCookie');
     
         
-        if (tokenCookie == null) {
+       /* if (tokenCookie == null) {
             tokenCookie = new Cookie('tokenCookie','1',null,-1,true);
         } else {
         
             String tokenCookie = String.valueOf(tokenCookie.getValue());
             tokenCookie = new Cookie('tokenCookie', String.valueOf(tokenCookie+1),null,-1,true);
-        }
+        }*/
     
         
         ApexPages.currentPage().setCookies(new Cookie[]{tokenCookie});
@@ -36,8 +36,8 @@ public with sharing class AuthenticationController {
         return token;
     }
 
-    public String setCookie(){
+ /*public String setCookie(){
         
-    }
+    }*/
 
 }
