@@ -6,7 +6,7 @@ public with sharing class SignUpController {
     public PageReference signUp()
     {
        insert student;
-       PageReference page = new PageReference('/apex/AfterLoginPage');
+       PageReference page = new PageReference('/apex/HomeworkPage');
                 page.getParameters().put('studentId', student.Id);
                 page.setRedirect(true);
                 return page;

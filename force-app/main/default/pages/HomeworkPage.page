@@ -1,4 +1,4 @@
-<apex:page controller="AfterLoginController">
+<apex:page controller="HomeworkController">
     <apex:sectionHeader title="New Homework" />
     <apex:form >
         <apex:pageBlock >

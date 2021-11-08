@@ -16,7 +16,7 @@ public with sharing class LoginController {
         {
             if((loginStudent.EmailId__c == student.EmailId__c) && (loginStudent.Password__c == student.Password__c))
             {
-                PageReference page = new PageReference('/apex/AfterLoginPage');
+                PageReference page = new PageReference('/apex/HomeworkPage');
                 page.getParameters().put('studentId', loginStudent.Id);
                 page.setRedirect(true);
                 return page;

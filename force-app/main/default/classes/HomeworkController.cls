@@ -1,8 +1,8 @@
-public with sharing class AfterLoginController {
-public Homework__c homework{get;set;}
+public with sharing class HomeworkController {
+    public Homework__c homework{get;set;}
 public Id studentId;
 
-public AfterLoginController() {
+public HomeworkController() {
     studentId = ApexPages.currentPage().getParameters().get('studentId');
     homework = new Homework__c(StudentId__c = studentId);
     System.debug(studentId); 
@@ -19,4 +19,5 @@ List<Homework__c> results = Database.query(
 );
 return results;
 }
+    
 }
