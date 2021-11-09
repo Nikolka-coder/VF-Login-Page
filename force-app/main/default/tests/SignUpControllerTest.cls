@@ -13,7 +13,7 @@ public with sharing class SignUpControllerTest {
     public static void testSignUpPass() {
          
         Student__c student = new Student__c();
-        student.User_Name__c = 'New Student';
+        student.Name = 'New Student';
         student.EmailId__c = 'newstudent@gmail.com';
         student.Password__c = 'Stu12345';
         insert student;

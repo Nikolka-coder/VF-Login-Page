@@ -2,7 +2,7 @@
     <apex:form>
         <apex:pageBlock>
             <apex:pageBlockSection title="Registration of new student">
-                <apex:inputField id="name" value="{!student.User_Name__c}" />
+                <apex:inputField id="name" value="{!student.Name}" />
             </apex:pageBlockSection>
 
 

@@ -3,7 +3,7 @@
     <apex:form>
         <apex:pageBlock>
             <apex:pageBlockSection>
-
+                <apex:inputField value="{! homework.Name }" />
                 <apex:inputField value="{! homework.Number_of_unit__c }" />
                 <apex:inputField value="{! homework.Discipline__c }" />
                 <apex:inputField value="{! homework.Field_for_answers__c }" />
@@ -16,6 +16,7 @@
     </apex:form>
     <apex:pageBlock title="Homeworks">
         <apex:pageBlockTable value="{! homeworks }" var="hw">
+            
             <apex:column value="{! hw.Number_of_unit__c }" />
             <apex:column value="{! hw.Discipline__c }" />
             <apex:column value="{! hw.Field_for_answers__c }" />

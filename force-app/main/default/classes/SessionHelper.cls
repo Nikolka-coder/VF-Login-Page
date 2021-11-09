@@ -20,7 +20,7 @@ public with sharing class SessionHelper {
             secretKey = 'unvalidValue';
         }
 
-        student = [SELECT Id, User_Name__c, Password__c, EmailId__c 
+        student = [SELECT Id, Name, Password__c, EmailId__c 
                    FROM Student__c
                    WHERE SessionKey__c =: secretKey
                    LIMIT 1];
