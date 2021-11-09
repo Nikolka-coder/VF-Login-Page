@@ -1,29 +1,27 @@
-<apex:page controller="SignUpController">
-    <apex:form >
-        <apex:pageBlock >
-        <apex:pageBlockSection title="Registration of new student">
-             <apex:inputField id="name" value="{!student.User_Name__c}" />
+<apex:page controller="SignUpController" title="SignUpPage">
+    <apex:form>
+        <apex:pageBlock>
+            <apex:pageBlockSection title="Registration of new student">
+                <apex:inputField id="name" value="{!student.User_Name__c}" />
             </apex:pageBlockSection>
-             <apex:pageBlockSection >
-            <apex:inputField id="age" value="{!student.Role__c}"/>
-             </apex:pageBlockSection>
-            
-        <apex:pageBlockSection >
-            <apex:pageBlockSectionItem >
-            
-                <apex:outputLabel value="password" for="pass"/>
-             <apex:inputSecret id="pass" value="{!student.Password__c}" required="true"/>     
-                </apex:pageBlockSectionItem>
-          </apex:pageBlockSection>
-           
-            
-            <apex:pageBlockSection >
-            <apex:inputField id="gender" value="{!student.EmailId__c}"/>
-            </apex:pageBlockSection>
-            
-            <apex:commandButton value="signUp" action="{!signUp}"/>
 
-    
+
+            <apex:pageBlockSection>
+                <apex:pageBlockSectionItem>
+
+                    <apex:outputLabel value="password" for="pass" />
+                    <apex:inputSecret id="pass" value="{!student.Password__c}" required="true" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+
+
+            <apex:pageBlockSection>
+                <apex:inputField id="gender" value="{!student.EmailId__c}" />
+            </apex:pageBlockSection>
+
+            <apex:commandButton value="signUp" action="{!signUp}" />
+
+
         </apex:pageBlock>
     </apex:form>
 </apex:page>

@@ -1,7 +1,8 @@
 public with sharing class LoginController {
     public Student__c student{get;set;}
     public LoginController() {
-        student=new Student__c();     
+        student = new Student__c();
+         
     }
     
     public PageReference login()
@@ -11,27 +12,36 @@ public with sharing class LoginController {
            return null;
        }
            
-        List<Student__c> students= [select Id,EmailId__c,Password__c from Student__c];
-        for(Student__c loginStudent:students)
-        {
-            if((loginStudent.EmailId__c == student.EmailId__c) && (loginStudent.Password__c == student.Password__c))
-            {
+        Student__c[] loginStudent= [select Id,EmailId__c,Password__c from Student__c 
+                             WHERE EmailId__c = :student.EmailId__c 
+                             AND Password__c =:student.Password__c LIMIT 1];
+         if(loginStudent.size() <= 0){
+            return null;
+        }
+                            
+         SessionHelper.student = loginStudent[0];
+                
+                String secret = SessionHelper.generateToken();
+                System.debug('secret= '+ secret);
+                SessionHelper.setCookies(secret);
+                SessionHelper.checkSession();
                 PageReference page = new PageReference('/apex/HomeworkPage');
-                page.getParameters().put('studentId', loginStudent.Id);
+                page.getParameters().put('studentId', SessionHelper.student.Id);
                 page.setRedirect(true);
                 return page;
-            }
-        }
         
-        return null;
+        
+        
     }
     public PageReference signUp()
     {
-       
-       PageReference page = new PageReference('/apex/SignUpPage');
-                page.setRedirect(true);
-                return page;
+        PageReference page = new PageReference('/apex/SignUpPage');
+        system.debug('go to signup');
+        page.setRedirect(true);
+        return page;
 
-      
     }
+
+    
+
 }
