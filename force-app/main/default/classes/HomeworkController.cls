@@ -1,6 +1,6 @@
 public with sharing class HomeworkController {
     public Homework__c homework{get;set;}
-public Id studentId;
+    public Id studentId;
 
 public HomeworkController() {
     studentId = ApexPages.currentPage().getParameters().get('studentId');

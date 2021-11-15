@@ -1,7 +1,8 @@
 <apex:page controller="LoginController">
     <apex:form>
+        <apex:messages/>
         <apex:pageBlock title="SignIn">
-            <apex:messages/>
+            
             <p>Login: </p>
             <apex:inputField id="gender" value="{!student.EmailId__c}" label="Login" />
             <br/>

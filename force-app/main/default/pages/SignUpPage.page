@@ -1,5 +1,6 @@
 <apex:page controller="SignUpController" title="SignUpPage">
     <apex:form>
+        <apex:messages/>
         <apex:pageBlock>
             <apex:pageBlockSection title="Registration of new student">
                 <apex:inputField id="name" value="{!student.Name}" />

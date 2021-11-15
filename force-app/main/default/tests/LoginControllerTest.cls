@@ -1,6 +1,7 @@
 
 @isTest
 public with sharing class LoginControllerTest {
+    
     @isTest
     public static void testLoginFail() {
 
@@ -17,14 +18,12 @@ public with sharing class LoginControllerTest {
         student.EmailId__c = 'newstudent@gmail.com';
         student.Password__c = 'Stu12345';
         insert student;
-        
+
         LoginController controller  = new LoginController();
-        controller.student.EmailId__c = 'newstudent@gmail.com';
-        controller.student.Password__c = 'Stu12345';
+        controller.student = student;
         controller.login();
-
-        /*PageReference ref = controller.login();
-
-        System.assertEquals(200, ref.statusCode);*/
+        
+        System.assertEquals('newstudent@gmail.com', SessionHelper.student.EmailId__c);
+        System.assertEquals(controller.student.Id, SessionHelper.student.Id);
     }
 }

@@ -1,6 +1,7 @@
 <apex:page controller="HomeworkController">
     <apex:sectionHeader title="New Homework" />
     <apex:form>
+        <apex:messages/>
         <apex:pageBlock>
             <apex:pageBlockSection>
                 <apex:inputField value="{! homework.Name }" />
