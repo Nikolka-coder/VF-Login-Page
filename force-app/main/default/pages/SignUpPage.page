@@ -1,6 +1,25 @@
 <apex:page controller="SignUpController" title="SignUpPage">
     <apex:form>
-        <apex:messages/>
+        <apex:pageMessages id="jserror"/>
+        <script>
+            function validateForm() {
+               var email = document.getElementById("{!$Component.SurveyForm.email}");
+            
+               if ( email == null || email == "" ) {
+                  alert("Email Required");
+                  return false;
+               }else {
+        var re = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+        return re.test(email);
+        }
+            </script>
+        <apex:actionFunction name="showMessage" 
+            action="{!showMessage}" rerender="jserror">
+            <apex:param name="errorLevel" assignTo="{!errorLevel}" 
+                value="" />
+            <apex:param name="messageName" assignTo="{!messageName}" 
+                value="" />
+        </apex:actionFunction>
         <apex:pageBlock>
             <apex:pageBlockSection title="Registration of new student">
                 <apex:inputField id="name" value="{!student.Name}" />
@@ -17,9 +36,12 @@
 
 
             <apex:pageBlockSection>
-                <apex:inputField id="gender" value="{!student.EmailId__c}" />
+                <apex:inputField id="email" value="{!student.EmailId__c}" />
             </apex:pageBlockSection>
 
+            <apex:pageBlockSection>
+                <apex:inputField id="class" value="{!student.Class__c}" />
+            </apex:pageBlockSection>
             <apex:commandButton value="signUp" action="{!signUp}" />
 
 

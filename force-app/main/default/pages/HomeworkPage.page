@@ -1,4 +1,4 @@
-<apex:page controller="HomeworkController">
+<apex:page controller="HomeworkController" action="{!LogOut}">
     <apex:sectionHeader title="New Homework" />
     <apex:form>
         <apex:messages/>

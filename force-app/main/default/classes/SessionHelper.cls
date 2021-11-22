@@ -20,14 +20,15 @@ public with sharing class SessionHelper {
             secretKey = 'unvalidValue';
         }
 
-        student = [SELECT Id, Name, Password__c, EmailId__c 
+        Student__c [] students = [SELECT Id, Name, Password__c, EmailId__c, IsTeacher__c, Class__c 
                    FROM Student__c
                    WHERE SessionKey__c =: secretKey
                    LIMIT 1];
         System.debug('secretKey = ' + secretKey);
        
         System.debug('student = ' + student);
-        if(student != null){
+        if(students.size() > 0){
+            student = students[0];
             validSession = true;
         }
         else {
@@ -53,4 +54,5 @@ public with sharing class SessionHelper {
         SessionHelper.student.SessionKey__c = secret;
         update SessionHelper.student;
     }
+    
 }

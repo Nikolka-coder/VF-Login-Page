@@ -1,0 +1,30 @@
+<apex:page controller="TeacherController" action="{!LogOut}">
+    <apex:sectionHeader title="Teacher Page" />
+    <apex:form>
+        <apex:messages/>
+        
+    
+    <apex:pageBlock title="List of my class">
+        <apex:pageBlockTable value="{! students }" var="s">
+            
+            <apex:column value="{! s.Name }" />
+            <apex:column headerValue="Homeworks">
+                <apex:commandButton value="Show" onclick="getHomeworks('{!studentId}'); return false;"
+                style="text-aligh:center; width:50px"
+                styleClass="buttonStyle"/><br/>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+
+    <apex:pageBlock title="Homeworks">
+        <apex:pageBlockTable value="{! homeworks }" var="hw">
+            
+            <apex:column value="{! hw.Number_of_unit__c }" />
+            <apex:column value="{! hw.Discipline__c }" />
+            <apex:column value="{! hw.Field_for_answers__c }" />
+            
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+</apex:form>
+</apex:page>
