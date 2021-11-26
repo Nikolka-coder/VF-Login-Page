@@ -1,6 +1,9 @@
-<apex:page controller="LoginController">
+<apex:page controller="LoginController" showHeader="false">
     <apex:form>
-        <apex:messages/>
+        <apex:pageMessages />
+         
+            
+            
         <apex:pageBlock title="SignIn">
             
             <p>Login: </p>

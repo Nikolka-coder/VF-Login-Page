@@ -1,26 +1,37 @@
-<apex:page controller="HomeworkController" action="{!LogOut}">
+<apex:page controller="HomeworkController" action="{!LogOut}" showHeader="false">
     <apex:sectionHeader title="New Homework" />
     <apex:form>
         <apex:messages/>
         <apex:pageBlock>
-            <apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="1">
                 <apex:inputField value="{! homework.Name }" />
                 <apex:inputField value="{! homework.Number_of_unit__c }" />
-                <apex:inputField value="{! homework.Discipline__c }" />
+                <apex:inputField value="{! homework.OOP__c }" />
+                <apex:inputField value="{! homework.English__c }" />
+                <apex:inputField value="{! homework.Math__c }" />
+                <apex:inputField value="{! homework.Ecology__c}" />
+                <apex:outputField value="{! homework.Total_sum_of_marks__c}" />
                 <apex:inputField value="{! homework.Field_for_answers__c }" />
-
+                <apex:outputField value="{! homework.Date__c}" />
             </apex:pageBlockSection>
             <apex:pageblockButtons>
                 <apex:commandButton value="Submit" action="{!createHomework}" />
+                <apex:commandButton value="Log Out" action="{!logOutButton}" />
             </apex:pageblockButtons>
         </apex:pageBlock>
     </apex:form>
     <apex:pageBlock title="Homeworks">
         <apex:pageBlockTable value="{! homeworks }" var="hw">
             
-            <apex:column value="{! hw.Number_of_unit__c }" />
-            <apex:column value="{! hw.Discipline__c }" />
+            <apex:column value="{! hw.Number_of_unit__c }" /> 
+            <apex:column value="{! hw.OOP__c }" />
+            <apex:column value="{! hw.English__c }" />
+            <apex:column value="{! hw.Math__c }" />
+            <apex:column value="{! hw.Ecology__c }" />
+            <apex:column value="{! hw.Total_sum_of_marks__c }" />          
             <apex:column value="{! hw.Field_for_answers__c }" />
+            <apex:column value="{! hw.Date__c }" />
         </apex:pageBlockTable>
     </apex:pageBlock>
 </apex:page>

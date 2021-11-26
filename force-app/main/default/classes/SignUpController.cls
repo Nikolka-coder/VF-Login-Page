@@ -1,36 +1,31 @@
-public with sharing class SignUpController {
-    public Student__c student{get;set;}
-    public String errorLevel { get; set; }
-    public String messageName { get; set; }
-    public SignUpController() {
+global without sharing class SignUpController {
+    global Student__c student{get;set;}
+    global SignUpController() {
         student = new Student__c();
         
     }
-    public PageReference signUp()
+    global PageReference signUp()
     {
-       
-       System.debug('student = ' + student);
-       insert student;
-       SessionHelper.student = student;
-       student.SessionKey__c = SessionHelper.generateToken();
-       
-       System.debug('secret= '+ student.SessionKey__c);
-       SessionHelper.setCookies(student.SessionKey__c);
-       SessionHelper.checkSession();
-                
-       PageReference page = new PageReference('/apex/HomeworkPage');
-                
-                page.setRedirect(true);
-                return page;
-
-      
-    }
-    public void showMessage() {
-        if(errorLevel == 'ERROR') {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Warning, 
-                messageName));
+        PageReference page;
+        try{
+        System.debug('student = ' + student);
+        if( student == null){
+        insert student;
         }
+        SessionHelper.student = student;
+        student.SessionKey__c = SessionHelper.generateToken();
+       
+        System.debug('secret= '+ student.SessionKey__c);
+        SessionHelper.setCookies(student.SessionKey__c);
+        SessionHelper.checkSession();
+                
+        page = new PageReference('/apex/HomeworkPage');
+        page.setRedirect(true);
+        return page;
+        }
+        catch(Exception e){
+        ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,'Please enter correct value'));
+        } 
+        return page;
     }
-  
-   
 }

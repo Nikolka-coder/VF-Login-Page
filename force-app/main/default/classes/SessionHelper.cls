@@ -1,4 +1,4 @@
-public with sharing class SessionHelper {
+public without sharing class SessionHelper {
     
     public static Boolean validSession = false;
     public static Student__c student; 
@@ -51,8 +51,8 @@ public with sharing class SessionHelper {
         Cookie session = new Cookie('identificator', secret, null, -1, true);
         ApexPages.currentPage().setCookies(new Cookie[]{session});
         System.debug( 'SessionHelper.student= ' + SessionHelper.student);
-        SessionHelper.student.SessionKey__c = secret;
-        update SessionHelper.student;
+        student.SessionKey__c = secret;
+        update student;
     }
     
 }
