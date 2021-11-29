@@ -1,6 +1,6 @@
-<apex:page controller="LoginController" showHeader="false">
+<apex:page controller="LoginController" showHeader="false" lightningStylesheets="true">
     <apex:form>
-        <apex:pageMessages />
+        
          
             
             
@@ -17,5 +17,6 @@
             <mark> </mark>
             <apex:commandButton value="SignUp" action="{!signUp}" style="width:50px" />
         </apex:pageBlock>
+        <apex:pageMessages />
     </apex:form>
 </apex:page>

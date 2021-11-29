@@ -11,9 +11,8 @@
                 <apex:inputField value="{! homework.English__c }" />
                 <apex:inputField value="{! homework.Math__c }" />
                 <apex:inputField value="{! homework.Ecology__c}" />
-                <apex:outputField value="{! homework.Total_sum_of_marks__c}" />
+                <apex:outputText value="{! totalSumOfMarks}" label="Total sum of marks:"/> 
                 <apex:inputField value="{! homework.Field_for_answers__c }" />
-                <apex:outputField value="{! homework.Date__c}" />
             </apex:pageBlockSection>
             <apex:pageblockButtons>
                 <apex:commandButton value="Submit" action="{!createHomework}" />

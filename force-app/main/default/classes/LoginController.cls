@@ -9,11 +9,11 @@ global without sharing class LoginController {
     public PageReference login(){
         Pagereference page;
        try{  
-        Student__c[] loginStudent= [SELECT Id,EmailId__c,Password__c, IsTeacher__c, Class__c
-                                    FROM Student__c 
-                                    WHERE EmailId__c = :student.EmailId__c 
-                                    AND Password__c =:student.Password__c 
-                                    LIMIT 1];
+            Student__c[] loginStudent= [SELECT Id,EmailId__c,Password__c, IsTeacher__c, Class__c
+                                        FROM Student__c 
+                                        WHERE EmailId__c = :student.EmailId__c 
+                                        AND Password__c =:student.Password__c 
+                                        LIMIT 1];
 
             SessionHelper.student = loginStudent[0];
             String secret = SessionHelper.generateToken();
@@ -28,15 +28,15 @@ global without sharing class LoginController {
                 return page;
             }
             else{
-            page = new PageReference('/apex/HomeworkPage');
-            page.setRedirect(true);
-            System.debug('page='+ page);
-            return page;
+                page = new PageReference('/apex/HomeworkPage');
+                page.setRedirect(true);
+                System.debug('page='+ page);
+                return page;
             }
             }
             catch(Exception e){
-            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,'Please enter correct value'));
-            
+                ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,'Please enter correct value'));
+                student.EmailId__c.addError('Please enter right login!');
             } 
 
             return page;
